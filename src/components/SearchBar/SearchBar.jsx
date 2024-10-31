@@ -16,16 +16,16 @@ const SearchBar = ({ setCharacterName }) => {
   };
 
   return (
-    <div>
+    <div className="search-form">
       <input
         type="text"
-        placeholder="Search character..."
+        placeholder="Search..."
         value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);
           setError("");
         }}
-        className="input"
+        className="input search-form input"
       />
       <button onClick={handleSearch} className="searchButton">
         Search

@@ -16,7 +16,7 @@
   transition: background-color 0.3s ease;
   /* border: 2px solid red; */
   margin-top: 80px;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 /* styles.css */
@@ -62,16 +62,14 @@
 
 /* App.css */
 .App {
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.header {
+/* .header {
   padding: 20px;
   background-color: inherit; /* Ensure the header background follows the theme */
-}
+} */
 
 .header-title {
   color: inherit; /* Ensure the text color follows the theme */
 }
-
-/* Additional styles for the modal, character list, etc. can go here */

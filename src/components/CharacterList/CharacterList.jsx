@@ -1,21 +1,21 @@
 // import { useState, useEffect } from "react";
 // import CharacterCard from "../CharacterCard/CharacterCard";
+// import CharacterModal from "../CharacterModal/CharacterModal";
 // import axios from "axios";
 // import SearchBar from "../SearchBar/SearchBar";
-// import md5 from "crypto-js/md5"; // Import md5 from crypto-js
+// import md5 from "crypto-js/md5";
 // import "./style.css";
 
 // const CharacterList = () => {
 //   const [characters, setCharacters] = useState([]);
 //   const [characterName, setCharacterName] = useState("");
+//   const [selectedCharacter, setSelectedCharacter] = useState(null);
 
-//   // Marvel API keys
 //   const publicKey = "c1263ac0fe61a6a8b5531e230b3d772f";
 //   const privateKey = "64eb042cddc517484656e6abe5eb9f254ed13c4f";
 
 //   useEffect(() => {
 //     const fetchCharacters = async () => {
-//       // Generate timestamp and hash
 //       const ts = new Date().getTime();
 //       const hash = md5(`${ts}${privateKey}${publicKey}`).toString();
 
@@ -40,14 +40,29 @@
 //     fetchCharacters();
 //   }, [characterName]);
 
+//   const handleCardClick = (character) => {
+//     setSelectedCharacter(character); // Open the modal with the selected character
+//   };
+
+//   const closeModal = () => {
+//     setSelectedCharacter(null); // Close the modal
+//   };
+
 //   return (
 //     <div className="characterList">
 //       <SearchBar setCharacterName={setCharacterName} />
 //       <div className="character-grid">
 //         {characters.map((character) => (
-//           <CharacterCard key={character.id} character={character} />
+//           <CharacterCard
+//             key={character.id}
+//             character={character}
+//             onClick={handleCardClick} // Pass the click handler
+//           />
 //         ))}
 //       </div>
+//       {selectedCharacter && (
+//         <CharacterModal character={selectedCharacter} onClose={closeModal} />
+//       )}
 //     </div>
 //   );
 // };
@@ -67,6 +82,7 @@ const CharacterList = () => {
   const [characterName, setCharacterName] = useState("");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
 
+  // Marvel API keys
   const publicKey = "c1263ac0fe61a6a8b5531e230b3d772f";
   const privateKey = "64eb042cddc517484656e6abe5eb9f254ed13c4f";
 
@@ -83,7 +99,7 @@ const CharacterList = () => {
               ts,
               apikey: publicKey,
               hash,
-              nameStartsWith: characterName,
+              ...(characterName && { nameStartsWith: characterName }), // Add only if characterName exists
             },
           }
         );
@@ -97,11 +113,11 @@ const CharacterList = () => {
   }, [characterName]);
 
   const handleCardClick = (character) => {
-    setSelectedCharacter(character); // Open the modal with the selected character
+    setSelectedCharacter(character);
   };
 
   const closeModal = () => {
-    setSelectedCharacter(null); // Close the modal
+    setSelectedCharacter(null);
   };
 
   return (
@@ -112,7 +128,7 @@ const CharacterList = () => {
           <CharacterCard
             key={character.id}
             character={character}
-            onClick={handleCardClick} // Pass the click handler
+            onClick={handleCardClick}
           />
         ))}
       </div>
