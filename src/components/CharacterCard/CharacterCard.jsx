@@ -6,8 +6,11 @@ const CharacterCard = ({ character, onClick }) => {
     <div onClick={() => onClick(character)} className="charactersCard">
       <img
         src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+        loading="lazy"
         alt={character.name}
         className="characterImage"
+        width="200" // Set explicit width
+        height="300" // Set explicit height
       />
       <h3>{character.name}</h3>
     </div>
