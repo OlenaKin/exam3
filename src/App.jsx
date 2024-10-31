@@ -25,8 +25,10 @@ const App = () => {
         }} // Apply theme styles directly to the div
         className="appContainer"
       >
+        <h2>Our Gallery:</h2>
         <Header toggleTheme={toggleTheme} /> {/* Pass toggleTheme to Header */}
         <CharacterList /> {/* Render the CharacterList component */}
+        <CharacterModal />
       </div>
     </ThemeProvider>
   );

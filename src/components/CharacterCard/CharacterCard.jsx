@@ -2,10 +2,15 @@ import PropTypes from "prop-types";
 import "./style.css";
 
 const CharacterCard = ({ character, onClick }) => {
+  const imageUrl =
+    character.thumbnail.path.replace(/^http:/, "https:") +
+    "." +
+    character.thumbnail.extension;
   return (
     <div onClick={() => onClick(character)} className="charactersCard">
       <img
-        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+        // src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+        src={imageUrl}
         loading="lazy"
         alt={character.name}
         className="characterImage"
