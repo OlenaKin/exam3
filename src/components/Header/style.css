@@ -1,0 +1,113 @@
+/* Header.css */
+.header {
+  z-index: 1000;
+  position: fixed;
+  height: 80px;
+  top: 0; /* Align it to the top */
+  left: 0; /* Start from the left */
+  right: 0; /* Allow it to stretch to the right */
+  width: 100%;
+  box-shadow: 3px 3px 5px red;
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  padding: 0 20px;
+}
+
+.header-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: auto;
+  width: 95%;
+  margin-left: 5%;
+  text-shadow: 1px 1px 2px #ff0000;
+  align-items: center;
+}
+
+.themeButton {
+  /* margin-left: auto;
+  background-color: aquamarine;
+  width: 5%; */
+
+  padding: 0.4em 2em;
+  border: none;
+  outline: none;
+  color: rgb(251, 247, 247);
+  background: #080808;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.themeButton:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.themeButton:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #101010;
+  left: 0;
+  top: 0;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    line-height: 1.1;
+    font-size: 2.6em;
+    margin: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 20px;
+    line-height: 0.5;
+    margin: 0;
+    text-align: left;
+  }
+}
